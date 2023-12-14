@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Dashboard from "./Dashboard";
+import AddValue from "./AddValue";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [monthlySavings, setMonthlySavings] = useState(0);
+
+  const updateSavings = (newValue) => {
+    setMonthlySavings(monthlySavings + newValue);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Dashboard monthlySavings={monthlySavings} />
+      <AddValue onUpdateSavings={updateSavings} />
     </div>
   );
-}
+};
 
 export default App;
